@@ -1,0 +1,4 @@
+#ifndef QUERYTHREAD_H
+#define QUERYTHREAD_H
+
+#endif // QUERYTHREAD_H
