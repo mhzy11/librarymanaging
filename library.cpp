@@ -25,7 +25,7 @@ std::shared_ptr<Book> Library::FindBook(const std::string& name, ErrorCode& erro
     return nullptr;
 }
 
-std::shared_ptr<Reader> Library::FindReader(const std::string& name, ErrorCode& error) {
+/*std::shared_ptr<Reader> Library::FindReader(const std::string& name, ErrorCode& error) {
     for (const auto& reader : m_readers) {
         if (reader->GetName() == name) {
             error = ErrorCode::SUCCESS;
@@ -34,9 +34,9 @@ std::shared_ptr<Reader> Library::FindReader(const std::string& name, ErrorCode& 
     }
     error = ErrorCode::READER_NOT_FOUND;
     return nullptr;
-}
+}*/
 
-ErrorCode Library::BorrowBook(const std::string& bookName, const std::string& readerName) {
+/*ErrorCode Library::BorrowBook(const std::string& bookName, const std::string& readerName) {
     ErrorCode error;
     auto book = FindBook(bookName, error);
     if (error != ErrorCode::SUCCESS) return error;
@@ -55,13 +55,13 @@ ErrorCode Library::BorrowBook(const std::string& bookName, const std::string& re
     if (book->Borrow()) {
         reader->BorrowBook(book);
         m_records.push_back(std::make_shared<BorrowRecord>(book, reader));
-        std::cout << "借阅成功！" << std::endl;
+        //std::cout << "借阅成功！" << std::endl;
         return ErrorCode::SUCCESS;
     }
     return ErrorCode::BOOK_ALREADY_BORROWED;
 }
-
-ErrorCode Library::ReturnBook(const std::string& bookName, const std::string& readerName) {
+*/
+/*ErrorCode Library::ReturnBook(const std::string& bookName, const std::string& readerName) {
     ErrorCode error;
     auto book = FindBook(bookName, error);
     if (error != ErrorCode::SUCCESS) return error;
@@ -79,13 +79,13 @@ ErrorCode Library::ReturnBook(const std::string& bookName, const std::string& re
             record->SetReturned(true);
             reader->ReturnBook(book);
 
-            std::cout << "归还成功！" << std::endl;
+            //std::cout << "归还成功！" << std::endl;
 
             if (returnDate > record->GetDueDate()) {
                 int overdueDays = (returnDate - record->GetDueDate()) / (24 * 60 * 60);
                 double fine = overdueDays * m_finePerDay;
                 reader->AddFine(fine);
-                std::cout << "超期 " << overdueDays << " 天，罚款 " << fine << " 元。" << std::endl;
+                //std::cout << "超期 " << overdueDays << " 天，罚款 " << fine << " 元。" << std::endl;
             }
             found = true;
             return ErrorCode::SUCCESS;
@@ -93,51 +93,51 @@ ErrorCode Library::ReturnBook(const std::string& bookName, const std::string& re
     }
 
     if (!found) {
-        std::cout << "未借该书,归还失败" << std::endl;
+        //std::cout << "未借该书,归还失败" << std::endl;
         return ErrorCode::BOOK_NOT_FOUND;
     }
     return ErrorCode::SUCCESS;
 }
-
+*/
 void Library::PrintBooks() const {
-    std::cout.imbue(std::locale(""));
-    std::cout << "这里有 " << m_books.size() << " 种书:" << std::endl;
+    //std::cout.imbue(std::locale(""));
+    //std::cout << "这里有 " << m_books.size() << " 种书:" << std::endl;
     for (const auto& book : m_books) {
-        std::cout << "ID=" << book->GetID() << "; 数量=" << book->GetNUM()
-            << ";  名字:" << book->GetName()
-            << ";  作者:" << book->GetAuthor()
-            << ";  类型: " << book->GetBookType() << ";";
+        //std::cout << "ID=" << book->GetID() << "; 数量=" << book->GetNUM()
+            //<< ";  名字:" << book->GetName()
+            //<< ";  作者:" << book->GetAuthor()
+            //<< ";  类型: " << book->GetBookType() << ";";
 
         if (const auto* tb = dynamic_cast<const TextBook*>(book.get())) {
-            std::cout << "科目: " << tb->GetSub() << ";" << std::endl;
+            //std::cout << "科目: " << tb->GetSub() << ";" << std::endl;
         } else if (const auto* nv = dynamic_cast<const Novel*>(book.get())) {
-            std::cout << "内容: " << nv->Getinty() << ";" << std::endl;
+            //std::cout << "内容: " << nv->Getinty() << ";" << std::endl;
         } else {
-            std::cout << std::endl;
+            //std::cout << std::endl;
         }
     }
 }
 
 void Library::PrintReaders() const {
-    std::cout << "读者信息:" << std::endl;
+    //std::cout << "读者信息:" << std::endl;
     for (const auto& reader : m_readers) {
-        std::cout << "姓名: " << reader->GetName()
-            << "; 类型: " << reader->GetReaderType()
-            << "; 罚款: " << reader->GetFine() << " 元;"
-            << "; 已借: " << reader->GetBorrowedCount()
-            << "/" << reader->GetMaxBorrowCount() << std::endl;
+        //std::cout << "姓名: " << reader->GetName()
+            //<< "; 类型: " << reader->GetReaderType()
+            //<< "; 罚款: " << reader->GetFine() << " 元;"
+            //<< "; 已借: " << reader->GetBorrowedCount()
+            //<< "/" << reader->GetMaxBorrowCount() << std::endl;
     }
 }
 
-void Library::QueryReaderBorrowRecords(const std::string& readerName) const {
+/*void Library::QueryReaderBorrowRecords(const std::string& readerName) const {
     ErrorCode error;
     auto reader = FindReader(readerName, error);
     if (error != ErrorCode::SUCCESS) {
-        std::cout << "未找到读者: " << readerName << std::endl;
+        //std::cout << "未找到读者: " << readerName << std::endl;
         return;
     }
 
-    std::cout << "读者 " << reader->GetName() << " 的借阅记录：" << std::endl;
+    //std::cout << "读者 " << reader->GetName() << " 的借阅记录：" << std::endl;
     bool hasRecords = false;
 
     for (const auto& record : m_records) {
@@ -152,20 +152,20 @@ void Library::QueryReaderBorrowRecords(const std::string& readerName) const {
                 time_t now = time(nullptr);
                 if (now > record->GetDueDate()) {
                     int overdueDays = (now - record->GetDueDate()) / (24 * 60 * 60);
-                    std::cout << "    已超期 " << overdueDays << " 天" << std::endl;
+                    //std::cout << "    已超期 " << overdueDays << " 天" << std::endl;
                 } else {
                     int remainingDays = (record->GetDueDate() - now) / (24 * 60 * 60);
-                    std::cout << "    剩余 " << remainingDays << " 天到期" << std::endl;
+                    //std::cout << "    剩余 " << remainingDays << " 天到期" << std::endl;
                 }
             }
         }
     }
 
     if (!hasRecords) {
-        std::cout << "没有找到借阅记录。" << std::endl;
+        //std::cout << "没有找到借阅记录。" << std::endl;
     }
 }
-
+*/
 ErrorCode Library::SaveToFile(const std::string& filename) {
     std::ofstream file(filename);
     if (!file.is_open()) {
@@ -208,10 +208,10 @@ ErrorCode Library::SaveToFile(const std::string& filename) {
     return ErrorCode::SUCCESS;
 }
 
-ErrorCode Library::LoadFromFile(const std::string& filename) {
+/*ErrorCode Library::LoadFromFile(const std::string& filename) {
     std::ifstream file(filename);
     if (!file.is_open()) {
-        std::cout << "没有找到图书馆数据文件，将创建新文件。" << std::endl;
+       // std::cout << "没有找到图书馆数据文件，将创建新文件。" << std::endl;
         return ErrorCode::FILE_OPERATION_FAILED;
     }
 
@@ -278,4 +278,4 @@ ErrorCode Library::LoadFromFile(const std::string& filename) {
 
     file.close();
     return ErrorCode::SUCCESS;
-}
+}*/

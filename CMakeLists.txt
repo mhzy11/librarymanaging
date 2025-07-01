@@ -14,9 +14,9 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
 set(PROJECT_SOURCES
         main.cpp
-        login.cpp
-        login.h
-        login.ui
+
+
+
         book.cpp
         book.h
         borrowrecord.cpp
@@ -33,8 +33,33 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(library1
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
-        main.ui
-        register.ui
+
+
+
+
+
+
+
+
+        form.h form.cpp form.ui
+
+        registering.h registering.cpp registering.ui
+        login.h login.cpp login.ui
+        globals.h
+
+        control1.h control1.cpp control1.ui
+        control2.h control2.cpp control2.ui
+        search.h search.cpp search.ui
+
+
+
+
+
+
+
+
+
+
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET library1 APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
