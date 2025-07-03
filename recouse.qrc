@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>shuzuo.jpg</file>
+        <file>shujia2.jpeg</file>
+        <file>shujia1.jpeg</file>
+        <file>shujia.jpg</file>
+        <file>shudui.jpg</file>
+        <file>shu.jpg</file>
+        <file>shu.jpeg</file>
+        <file>shen.jpg</file>
+        <file>qian.jpeg</file>
+        <file>kanshu.jpg</file>
+        <file>henqian.jpg</file>
+    </qresource>
+</RCC>

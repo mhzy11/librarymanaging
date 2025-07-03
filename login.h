@@ -2,6 +2,7 @@
 #define LOGIN_H
 
 #include <QWidget>
+#include<QPainter>
 namespace Ui {
 class Login;
 }
@@ -13,6 +14,8 @@ class Login : public QWidget
 public:
     explicit Login(QWidget *parent = nullptr);
     ~Login();
+    void painEvent(QPaintEvent * event);
+
 
 private slots:
     void on_registerButton_clicked();

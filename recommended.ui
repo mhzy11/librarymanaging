@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>recommended</class>
+ <widget class="QWidget" name="recommended">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>537</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QScrollArea" name="scrollArea">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>531</width>
+     <height>301</height>
+    </rect>
+   </property>
+   <property name="widgetResizable">
+    <bool>true</bool>
+   </property>
+   <widget class="QWidget" name="scrollAreaWidgetContents">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>529</width>
+      <height>299</height>
+     </rect>
+    </property>
+    <widget class="QScrollArea" name="scrollArea_2">
+     <property name="geometry">
+      <rect>
+       <x>29</x>
+       <y>9</y>
+       <width>501</width>
+       <height>281</height>
+      </rect>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
+     </property>
+     <property name="sizeAdjustPolicy">
+      <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents</enum>
+     </property>
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="scrollAreaWidgetContents_2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>-279</y>
+        <width>482</width>
+        <height>1232</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QWidget" name="widget" native="true">
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <widget class="QWidget" name="widget_3" native="true">
+            <property name="minimumSize">
+             <size>
+              <width>318</width>
+              <height>400</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="widget_2" native="true">
+            <property name="minimumSize">
+             <size>
+              <width>318</width>
+              <height>400</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="widget_4" native="true">
+            <property name="minimumSize">
+             <size>
+              <width>318</width>
+              <height>400</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

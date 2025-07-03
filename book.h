@@ -89,7 +89,6 @@ public:
         : Book(id, num, name, intro, author), m_intype(gtyp) {}
 
     ~Novel() {}
-
     const std::string& Getinty() const { return m_intype; }
     std::string GetBookType() const override { return "小说"; }
 };
